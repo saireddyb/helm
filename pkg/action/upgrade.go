@@ -107,6 +107,8 @@ type Upgrade struct {
 	Lock sync.Mutex
 	// Enable DNS lookups when rendering templates
 	EnableDNS bool
+	// values yaml file inside helm artifact
+	RepoFile string
 }
 
 type resultMessage struct {
