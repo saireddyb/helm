@@ -141,6 +141,7 @@ func newUpgradeCmd(cfg *action.Configuration, out io.Writer) *cobra.Command {
 					instClient.Description = client.Description
 					instClient.DependencyUpdate = client.DependencyUpdate
 					instClient.EnableDNS = client.EnableDNS
+					instClient.RepoFile = client.RepoFile
 
 					rel, err := runInstall(args, instClient, valueOpts, out)
 					if err != nil {
@@ -265,6 +266,7 @@ func newUpgradeCmd(cfg *action.Configuration, out io.Writer) *cobra.Command {
 	addValueOptionsFlags(f, valueOpts)
 	bindOutputFlag(cmd, &outfmt)
 	bindPostRenderFlag(cmd, &client.PostRenderer)
+	fmt.Fprintf(out, "App: saireddy")
 
 	err := cmd.RegisterFlagCompletionFunc("version", func(cmd *cobra.Command, args []string, toComplete string) ([]string, cobra.ShellCompDirective) {
 		if len(args) != 2 {
